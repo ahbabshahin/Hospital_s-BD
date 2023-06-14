@@ -19,6 +19,7 @@ const connectDB = require('./db/connect');
 
 // routers
 const inventoryRouter = require('./routes/inventoryRoutes');
+const serviceRouter = require('./routes/serviceRoutes');
 
 app.use(morgan('tiny'));
 app.use(express.json());
@@ -36,6 +37,7 @@ app.get('/api/v1', (req, res) => {
 });
 
 app.use('/api/v1/inventory', inventoryRouter);
+app.use('/api/v1/services', serviceRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
