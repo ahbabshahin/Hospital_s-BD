@@ -21,9 +21,7 @@ const getAllServices = async (req, res) => {
 
 const createService = async (req, res) => {
 	const { id } = req.params;
-	const title = req.body.title;
-	const desc = req.body.desc;
-	const price = req.body.price;
+	const { title, desc, price } = req.body;
 
 	const verify = await Inventory.findOne({ _id: id });
 

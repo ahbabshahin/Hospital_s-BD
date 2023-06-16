@@ -27,10 +27,7 @@ const getAllInfo = async (req, res) => {
 
 const createInfo = async (req, res) => {
 	const { id } = req.params;
-	const name = req.body.name;
-	const department = req.body.department;
-	const schedule = req.body.schedule;
-	const fee = req.body.fee;
+	const { name, department, schedule, fee } = req.body;
 
 	const verify = await Inventory.findOne({ _id: id });
 
