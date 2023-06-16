@@ -18,6 +18,8 @@ const cors = require('cors');
 const connectDB = require('./db/connect');
 
 // routers
+const authRouter = require('./routes/authRoutes');
+const userRouter = require('./routes/userRoutes');
 const inventoryRouter = require('./routes/inventoryRoutes');
 const serviceRouter = require('./routes/serviceRoutes');
 const doctorsInfoRouter = require('./routes/doctorsInfoRoutes');
@@ -37,6 +39,8 @@ app.get('/api/v1', (req, res) => {
 	res.send('test-api');
 });
 
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', userRouter);
 app.use('/api/v1/inventory', inventoryRouter);
 app.use('/api/v1/services', serviceRouter);
 app.use('/api/v1/info', doctorsInfoRouter);
