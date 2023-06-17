@@ -4,15 +4,16 @@ const { StatusCodes } = require('http-status-codes');
 const { NotFoundError } = require('../errors');
 
 const getAllAppointments = async (req, res) => {
-	const app = await Appointment.find({});
+	const { hId } = req.params;
+	const app = await Appointment.find({ hId });
 	res.status(StatusCodes.OK).json({ app, count: app.length });
 };
 
 const getSingleAppointment = async (req, res) => {
-	const { id } = req.params;
+	const { dId } = req.params;
 
 	const app = await Appointment.find(
-		{ dId: id },
+		{ dId },
 		{
 			name: 1,
 			address: 1,
@@ -26,16 +27,17 @@ const getSingleAppointment = async (req, res) => {
 };
 
 const createAppointment = async (req, res) => {
-	const { id } = req.params;
+	const { hId, dId } = req.params;
 	const { name, address, schedule, age, contacts } = req.body;
 
-	const verify = await DocInfo.findOne({ _id: id });
+	const verify = await DocInfo.findOne({ _id: dId, hId: hId });
 
 	if (!verify) {
 		throw new NotFoundError('Invalid Credentials');
 	} else {
 		const app = await Appointment.create({
-			dId: id,
+			hId: hId,
+			dId: dId,
 			name,
 			address,
 			schedule,
@@ -48,14 +50,14 @@ const createAppointment = async (req, res) => {
 };
 
 const deleteAppointment = async (req, res) => {
-	const { id } = req.params;
+	const { hId, dId } = req.params;
 
-	const verify = await Appointment.findOne({ _id: id });
+	const verify = await Appointment.findOne({ _id: dId, hId: hId });
 	if (!verify) {
-		throw new NotFoundError(`No appointment with id ${id}`);
+		throw new NotFoundError(`No appointment with id ${dId}`);
 	}
 
-	const app = await Appointment.findOneAndDelete({ _id: id });
+	const app = await Appointment.findOneAndDelete({ _id: dId, hId: hId });
 
 	res.status(StatusCodes.OK).json({
 		msg: 'Appointment been deleted successfully',

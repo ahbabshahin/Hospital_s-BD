@@ -8,9 +8,9 @@ const {
 	deleteAppointment,
 } = require('../controllers/appointmentController');
 
-router.route('/').get(getAllAppointments);
+router.route('/:hId').get(getAllAppointments);
 router
-	.route('/:id')
+	.route('/:hId/:dId')
 	.post(createAppointment)
 	.get(getSingleAppointment)
 	.delete(deleteAppointment);

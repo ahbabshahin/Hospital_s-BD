@@ -24,6 +24,7 @@ const inventoryRouter = require('./routes/inventoryRoutes');
 const serviceRouter = require('./routes/serviceRoutes');
 const doctorsInfoRouter = require('./routes/doctorsInfoRoutes');
 const appointmentRouter = require('./routes/appointmentRoutes');
+const bookingRouter = require('./routes/bookingRoutes');
 
 app.use(morgan('tiny'));
 app.use(express.json());
@@ -46,6 +47,7 @@ app.use('/api/v1/inventory', inventoryRouter);
 app.use('/api/v1/services', serviceRouter);
 app.use('/api/v1/info', doctorsInfoRouter);
 app.use('/api/v1/appointment', appointmentRouter);
+app.use('/api/v1/booking', bookingRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);

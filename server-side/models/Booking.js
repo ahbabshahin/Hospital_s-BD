@@ -1,21 +1,16 @@
 const mongoose = require('mongoose');
 
-const AppointmentsSchema = new mongoose.Schema(
+const BookingSchema = new mongoose.Schema(
 	{
 		hId: {
 			type: String,
 		},
-		dId: {
+		sId: {
 			type: String,
 		},
-
 		name: {
 			type: String,
 			required: [true, 'Please provide name'],
-		},
-
-		address: {
-			type: String,
 		},
 
 		schedule: {
@@ -29,15 +24,16 @@ const AppointmentsSchema = new mongoose.Schema(
 			},
 		},
 
-		age: {
-			type: Number,
-		},
 		contacts: {
 			type: String,
 			required: [true, 'Please provide contact number'],
+		},
+
+		age: {
+			type: Number,
 		},
 	},
 	{ timestamps: true }
 );
 
-module.exports = mongoose.model('Appointment', AppointmentsSchema);
+module.exports = mongoose.model('Booking', BookingSchema);
