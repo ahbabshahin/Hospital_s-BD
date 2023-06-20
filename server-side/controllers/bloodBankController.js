@@ -26,20 +26,18 @@ const getAllInfo = async (req, res) => {
 const getSingleInfo = async (req, res) => {
 	const { hId, id } = req.params;
 
-	const verify = await Inventory.findOne({ _id: hId });
-
-	if (!verify) {
-		throw new NotFoundError(`No information with id ${hId}`);
-	}
-
 	const bb = await BB.findOne(
-		{ _id: id },
+		{ _id: id, hId },
 		{
 			group: 1,
 			amount: 1,
 			contacts: 1,
 		}
 	);
+
+	if (!bb) {
+		throw new NotFoundError(`No information with id ${id}`);
+	}
 
 	res.status(StatusCodes.OK).json({ bb });
 };
@@ -67,10 +65,10 @@ const createInfo = async (req, res) => {
 const updateInfo = async (req, res) => {
 	const { hId, id } = req.params;
 
-	const verify = await Inventory.findOne({ _id: hId });
+	const verify = await BB.findOne({ _id: id, hId });
 
 	if (!verify) {
-		throw new NotFoundError(`No information with id ${hId}`);
+		throw new NotFoundError(`No information with id ${id}`);
 	}
 
 	const bb = await BB.findOneAndUpdate({ _id: id }, req.body, {

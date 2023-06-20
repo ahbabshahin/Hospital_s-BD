@@ -26,6 +26,7 @@ const doctorsInfoRouter = require('./routes/doctorsInfoRoutes');
 const appointmentRouter = require('./routes/appointmentRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const bloodBankRouter = require('./routes/bloodBankRoutes');
+const ambulanceRouter = require('./routes/ambulanceRoutes');
 
 app.use(morgan('tiny'));
 app.use(express.json());
@@ -50,6 +51,7 @@ app.use('/api/v1/info', doctorsInfoRouter);
 app.use('/api/v1/appointment', appointmentRouter);
 app.use('/api/v1/booking', bookingRouter);
 app.use('/api/v1/bloodBank', bloodBankRouter);
+app.use('/api/v1/ambulance', ambulanceRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
