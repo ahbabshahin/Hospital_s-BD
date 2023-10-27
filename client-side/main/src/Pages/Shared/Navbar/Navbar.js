@@ -10,6 +10,8 @@ const Navbar = () => {
     <li><Link to="/about">About</Link></li>
     {/* <li><Link to="/reviews">Reviews</Link></li> */}
     <li><Link to="/login">Login</Link></li>
+    <li><Link to="/appointment">Appointment</Link></li>
+    <li><Link to="/inventory">Inventory</Link></li>
 </React.Fragment>
 
 

@@ -6,11 +6,14 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "babel-plugin-react-css-modules": "^5.2.6",
+    "postcss-loader": "^7.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.46.2",
-    "react-router-dom": "^6.16.0",
+    "react-hook-form": "^7.47.0",
+    "react-router-dom": "^6.17.0",
     "react-scripts": "5.0.1",
+    "source-map-loader": "^4.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -38,7 +41,10 @@
     ]
   },
   "devDependencies": {
-    "daisyui": "^3.8.1",
-    "tailwindcss": "^3.3.3"
+    "css-loader": "^6.8.1",
+    "daisyui": "^3.9.3",
+    "style-loader": "^3.3.3",
+    "tailwindcss": "^3.3.3",
+    "webpack": "^5.89.0"
   }
 }
